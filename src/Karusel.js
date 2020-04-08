@@ -1,7 +1,15 @@
 import SlideScroll from './anim/SlideScroll';
 import './karusel.scss';
 
-const getMousePos = e => ({ x: e.clientX, y: e.clientY });
+const getMousePos = e => {
+	let cursor = e;
+
+	if( e instanceof TouchEvent ){
+		cursor = e.touches[0];
+	}
+
+	return { x: cursor.clientX, y: cursor.clientY };
+};
 
 const changeClass = (fn, target, className) => {
 	if( Array.isArray(target) ) target.forEach(el => el.classList[fn](className));
@@ -31,7 +39,7 @@ const getElement = (element) => {
 		if( typeof element === 'string' ){
 			tempHTML.innerHTML = element;
 			resolve(tempHTML.firstChild);
-			
+
 		} else if( element instanceof HTMLElement ){
 			resolve(element);
 
@@ -205,8 +213,13 @@ class Karusel {
 
 		//swipe events
 		this.setEventListener(this.state.container, 'mousedown', this.onGrab);
+		this.setEventListener(this.state.container, 'touchstart', this.onGrab);
+
 		this.setEventListener(document, 'mousemove', this.onDrag);
+		this.setEventListener(document, 'touchmove', this.onDrag);
+
 		this.setEventListener(document, 'mouseup', this.onDrop);
+		this.setEventListener(document, 'touchend', this.onDrop);
 
 		//ui events
 		this.setEventListener(this.state.ui.arrows.prev, 'click', this.onPrev);
