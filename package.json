@@ -1,6 +1,6 @@
 {
 	"name": "karusel",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "A simple customisable carousel in plain vanilla JavaScript",
 	"main": "build/Karusel.js",
 	"scripts": {
@@ -37,5 +37,9 @@
 		"module"
 	],
 	"author": "Jessyp98",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jessypouliot98/Karusel.git"
+	},
 	"license": "ISC"
 }

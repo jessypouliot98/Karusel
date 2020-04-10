@@ -87,6 +87,7 @@ class Karusel {
 		settings: {
 			slidesToShow: 1,
 			speed: 300,
+			autoplay: false,
 			autoplaySpeed: 1500,
 			infinite: true,
 			prevArrow: '<button><</button>',
