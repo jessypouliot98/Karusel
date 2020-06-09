@@ -1,10 +1,10 @@
-import SlideScroll from './anim/SlideScroll';
-import './karusel.scss';
+import SlideScroll from './anim/SlideScroll'
+import './karusel.scss'
 
 const getMousePos = e => {
 	let cursor = e;
 
-	if( e instanceof TouchEvent ){
+	if( typeof TouchEvent === 'function' && e instanceof TouchEvent ){
 		cursor = e.touches[0];
 	}
 
